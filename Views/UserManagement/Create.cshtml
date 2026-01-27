@@ -1,0 +1,85 @@
+﻿@model ECommerce3.Models.ViewModels.UserVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4">Create User</h4">
+<br />
+<br />
+<div>
+    <form method="post" action="">
+        <table width="40%" align="center" cellpadding="5">
+            <tr>
+                <th>Name</th>
+                <td>
+                    @Html.TextBoxFor((uservm) => uservm.Name, new { type = "text", maxlength = "20" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor((uservm) => uservm.Name, null, new { style = "color:red" })
+                </td>
+            </tr>
+            <tr>
+                <th>DOB</th>
+                <td>
+                    @Html.TextBoxFor((uservm) => uservm.DOB, new { type = "date" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor((uservm) => uservm.DOB, null, new { style="color:red" })
+                </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>
+                    @Html.TextBoxFor((uservm) => uservm.Email, new { type = "email", maxlength = "50" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor((uservm) => uservm.Email, null, new { style = "color:red" })
+                </td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>
+                    @Html.TextBoxFor((uservm) => uservm.Mobile, new { type = "text", maxlength = "10" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor((uservm) => uservm.Mobile, null, new { style = "color:red" })
+                </td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    @Html.RadioButtonFor((uservm) => uservm.Gender, "M") Male
+                    @Html.RadioButtonFor((uservm) => uservm.Gender, "F") Female
+                </td>
+                @*<td>
+                        @Html.ValidationMessageFor((uservm) => uservm.Gender, null, new { style = "color:red" })
+                    </td>*@
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>
+                    @Html.TextBoxFor((uservm) => uservm.password, new { type = "password", maxlength = "50" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor((uservm) => uservm.password, null, new { style = "color:red" })
+                </td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>
+                    @Html.DropDownListFor((uservm) => uservm.RoleId, new SelectList(Model.Roles, "Id", "Name"))
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3">
+                    <button type="submit" name="btn1">Register</button>
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+</div>
+
+

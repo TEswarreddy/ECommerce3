@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header">
+        <h1>User Management  in MVC</h1>
+    </div>
+    <div id="left">
+        @{ string role = "admin";
+
+
+}
+        @if (role == "admin")
+            {
+                @Html.Partial("_AdminOptions")
+            }
+        else if (role == "customer")
+            {
+                @Html.Partial("_CustomerOptions")
+            }
+
+
+    </div>
+    <div id="main">
+        @RenderBody()
+    </div>
+
+    <div id="footer">
+        <p>TEswarreddy</p>
+    </div>
+
+</body>
+</html>

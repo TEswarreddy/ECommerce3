@@ -1,0 +1,63 @@
+﻿@using ECommerce3.EntityLayer;
+@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<br />
+<div>
+    @Html.ActionLink("Add new User", "Create", "UserManagement")
+
+</div>
+
+<br />
+<form method="post" action="/UserManagement/SearchByName">
+    <table width="40%" align="center" cellpadding="10">
+        <tr>
+            <td>
+                Enter name : <input type="text" maxlength="50" id="txtSearch" name="txtname" />
+                <button type="submit" name="btn1">Search</button>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+<div>
+    <table align="center" width="60%" cellpadding="5" border="1">
+        <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>RoleName</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (User item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.DOB</td>
+                <td>@(item.Gender=="M" ? "male":"Female")</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td>@item.Role.Name</td>
+                <td>
+                    <a href="/UserManagement/Edit/@item.Id">Edit</a>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "delete", "ManageUsers", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

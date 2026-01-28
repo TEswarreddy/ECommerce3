@@ -44,6 +44,9 @@ namespace ECommerce3.Models.ViewModels
         [Required(ErrorMessage = "Role is a Required Field")]
         public short RoleId { get; set; }
 
+        public int Status { get; set; }
+
+
         public IEnumerable<Role> Roles { get; set; }
 
 

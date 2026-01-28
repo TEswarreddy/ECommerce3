@@ -79,10 +79,51 @@ namespace ECommerce3.Controllers
                 RoleId = user.RoleId,
                 Gender=user.Gender,
                 password=user.Password,
+                Status = (int)user.Status,
             };
             return View(uservm);
         }
-       
+
+        [HttpPost]
+        public ActionResult Edit(UserVM uservm)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = new User()
+                {
+                    Id = uservm.Id,
+                    Name = uservm.Name,
+                    Email = uservm.Email,
+                    DOB = uservm.DOB,
+                    Mobile = uservm.Mobile,
+                    Status =(byte) uservm.Status,
+                    Gender = uservm.Gender,
+                    Password = uservm.password,
+                    RoleId = uservm.RoleId
+
+                };
+                User result = userRepository.Update(user);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(uservm);
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            
+            bool isDeleted = userRepository.Delete(id);
+            
+            return RedirectToAction("Index");
+            
+
+            
+        }
+
 
     }
 }
